@@ -34,22 +34,6 @@ void generate(struct Matrix *m) {
 	}
 }
 
-/*struct Matrix three_nested_loop(struct Matrix a, struct Matrix b) {
-	struct Matrix m;
-	m.r = a.r; m.c = b.c;
-	int i, j, k;
-	m.m = malloc(m.r * sizeof(NUM*));
-	for (i = 0; i < m.r; ++i) {
-		m.m[i] = malloc(m.c * sizeof(NUM));
-		for (j = 0; j < m.c; ++j) {
-			m.m[i][j] = 0;
-			for (k = 0; k < a.c; ++k)
-		  		m.m[i][j] = m.m[i][j] + (a.m[i][k] * b.m[k][j]);
-		}
-	}
-	return m;
-}*/
-
 struct Matrix bloqued_version(struct Matrix a, struct Matrix b, int blocks) {
 	struct Matrix m;
 	m.r = a.r; m.c = b.c;
