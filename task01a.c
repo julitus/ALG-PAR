@@ -1,5 +1,3 @@
-/*#include <sys/types.h>
-#include <unistd.h>*/
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -54,7 +52,7 @@ int main(int argc, char *argv[])
 {
 	srand(time(NULL));
 
-	int n = 1000, blk = 2;
+	int n = 800, blk = 10;
 	struct Matrix m1, m2, p1, p2;
 	m1.r = n; m1.c = n; m2.r = n; m2.c = n;
 
@@ -66,11 +64,20 @@ int main(int argc, char *argv[])
 	print(m2);
 	printf("\n");*/
 
+	clock_t start = clock(), end;
 	p1 = three_nested_loop(m1, m2);
+	end = clock();
+	printf("%f\n", ((double)(end - start) / CLOCKS_PER_SEC));
 	//print(p1);
-
-	//valgrind and KCachegrind
-	//sudo apt-get install kubuntu-desktop
 
 	return 0;
 }
+
+// gcc -g task01a.c
+// valgrind --tool=cachegrind ./a.out
+// kcachegrind <cachegrind.out>
+// 500 -> 1.59 seg
+// 600 -> 3.44 seg
+// 800 -> 8.69 seg
+// 1000 -> 17.61 seg
+// 1500 -> 61.42 seg
