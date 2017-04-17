@@ -35,3 +35,6 @@ int main(int argc, char** argv) {
   MPI_Finalize();
   return 0;
 }
+
+//mpicc -g -Wall task02.c
+//mpiexec -n 2 ./a.out
